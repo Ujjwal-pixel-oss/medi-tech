@@ -1,1 +1,1 @@
-# medi-tech
+# Medi Locker
