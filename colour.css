@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.profile-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 120px;
+    background-color: bisque;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+#profile-img {
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    font-size: 20px;
+    object-position: left;
+
+}
+
+/* .image {
+    background-color: rgb(134, 120, 120);
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  font-size: 20px;
+   object-position: left;
+} */
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 50px;
+    background-color: #6898c8;
+    width: 100vw;
+}
+
+.personal {
+    color: white;
+    text-decoration-line: none;
+}
+
+h3 {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+}
+
+.info {
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.medical1 {
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#test-reports {
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+h4 {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+}
+
+#new-report-form {
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+#report-type {
+    height: 35px;
+}
+
+#report-description {
+    height: 50px;
+}

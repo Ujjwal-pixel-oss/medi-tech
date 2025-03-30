@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>LOGIN AS DOCTOR</h1>
+    <form id="doctor-login">
+        <label for="doctor-name">Doctor's name</label>
+        <input type="text" id="doctor-name" placeholder="ENTER YOUR NAME" required>
+        <label for="hospital-id">Hospital Registration ID:</label>
+        <input type="text" id="hospital-id" placeholder="ENTER HOSPITAL REGITRATION ID" required>
+        <label for="Unique-id"> Unique ID</label>
+        <input type="number" id="Unique-id" placeholder="Enter the unique ID" required>
+        <button id="enter" type="submit "><a href="index1.html"
+                style="text-decoration-line: none; color: white;">LOGIN</a></button>
+    </form>
+    <script>
+        function loginDoctor() {
+            // In real applications, authenticate the doctor
+            window.location.href = "index3.html"; // Redirect to patient lookup
+        }
+    </script>
+   
+</body>
+
+</html>

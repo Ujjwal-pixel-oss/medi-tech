@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+background-color: #66d4af;
+color: white;
+height: 100px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#doctor-login{
+        padding: 20px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#doctor-name{
+    padding: 5px 20px 5px 20px;
+}
+#hospital-id{
+    padding: 5px 20px 5px 20px;
+    width: 250px;
+}
+#Unique-id{
+    padding: 5px 20px 5px 20px;
+    width: 250px;
+}
+#enter{
+    background-color: rgb(129, 129, 225);
+    color: white;
+    padding: 5px 10px 5px 10px;
+    width: 80px;
+    font-size: 15px;
+}

@@ -1,0 +1,173 @@
+<script>
+    function retrievePatientData() {
+        let enteredID = document.getElementById("Unique-id").value;
+        let storedID = localStorage.getItem("patientID");
+
+        if (enteredID === storedID) {
+            document.getElementById("patientName").textContent = localStorage.getItem("patientName");
+            document.getElementById("patientDOB").textContent = localStorage.getItem("patientDOB");
+            document.getElementById("patientEmail").textContent = localStorage.getItem("patientEmail");
+            document.getElementById("patientNumber").textContent = localStorage.getItem("patientNumber");
+            document.getElementById("patientBlood").textContent = localStorage.getItem("patientBlood");
+            document.getElementById("patientAllergies").textContent = localStorage.getItem("patientAllergies");
+            document.getElementById("patientID").textContent = storedID;
+
+            // Show the patient data section
+            document.getElementById("patient-data").style.display = "block";
+        } else {
+            alert("Patient not found! Please check the ID.");
+            document.getElementById("patient-data").style.display = "none";
+        }
+    }
+
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - View Patient</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+
+<body>
+    <header>
+        <h1>Doctor Portal - Patient Lookup</h1>
+    </header>
+
+    <div class="container">
+        <input type="text" id="Unique-id" placeholder="Enter Patient ID">
+        <button onclick="retrievePatientData()">Search</button>
+
+
+        <div id="patient-data" style="display: none;">
+            <h2>Patient Details</h2>
+            <div class="image"> <input type="file" id="profile-img-upload" accept="image/*"
+                style="display:none">
+            <label for="profile-img-upload" class="profile-img-label">
+                <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture" style="   width: 70px;
+                height: 70px;
+                border: 1px solid black;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 15px;
+                font-size: 20px;
+                object-position: left;">
+            </label>
+            <p><strong>Name:</strong> <span id="patientName"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="patientDOB"></span></p>
+            <p><strong>Email:</strong> <span id="patientEmail"></span></p>
+            <p><strong>Mobile Number:</strong> <span id="patientNumber"></span></p>
+            <p><strong>Blood Group:</strong> <span id="patientBlood"></span></p>
+            <p><strong>Allergies:</strong> <span id="patientAllergies"></span></p>
+            <p><strong>Unique ID:</strong> <span id="patientID"></span></p>
+            <div id="tests">
+                <h3>Tests & Reports</h3>
+                <ul id="test-reports">
+                    <li>Blood Test - <span id="blood-test-date">N/A</span></li>
+                    <li>X-Ray - <span id="xray-date">N/A</span></li>
+                    <li>ECG - <span id="ecg-date">N/A</span></li>
+                </ul>
+            </div>
+
+
+            <div id="new">
+                <h4>Add New Report / Test</h4>
+                <form id="new-report-form">
+                    <label for="report-type">Report Type:</label>
+                    <input type="text" id="report-type" placeholder="Enter test name (e.g., MRI)" required><br><br>
+
+                    <label for="report-file">Upload Report:</label>
+                    <input type="file" id="report-file" accept="application/pdf,image/*" required><br><br>
+
+                    <label for="report-description">Report Description:</label>
+                    <textarea id="report-description"
+                        placeholder="Enter details of the report (optional)"></textarea><br><br>
+
+                    <button type="submit">Upload Report</button>
+                </form>
+            </div>
+
+            <button id="edit-button"
+                style="background-color: rgb(94, 94, 134) ; padding: 14px 14px 14px 14px; margin-bottom: 20px; border-radius: 5px ; color: white;">Edit
+                Profile</button>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Health Portal</p>
+    </footer>
+
+    <script>
+        function retrievePatientData() {
+            let enteredID = document.getElementById("Unique-id").value;
+            let storedID = localStorage.getItem("patientID");
+
+            if (enteredID === storedID) {
+                document.getElementById("patientName").textContent = localStorage.getItem("patientName");
+                document.getElementById("patientDOB").textContent = localStorage.getItem("patientDOB");
+                document.getElementById("patientEmail").textContent = localStorage.getItem("patientEmail");
+                document.getElementById("patientNumber").textContent = localStorage.getItem("patientNumber");
+                document.getElementById("patientBlood").textContent = localStorage.getItem("patientBlood");
+                document.getElementById("patientAllergies").textContent = localStorage.getItem("patientAllergies");
+                document.getElementById("patientID").textContent = storedID;
+                document.getElementById("patientAllergies").textContent = localStorage.getItem("patientAllergies");
+
+
+                // Show the patient data section
+                document.getElementById("patient-data").style.display = "block";
+            } else {
+                alert("Patient not found! Please check the ID.");
+                document.getElementById("patient-data").style.display = "none";
+            }
+        }
+
+        const profileImgUpload = document.getElementById("profile-img-upload");
+        const profileImg = document.getElementById("profile-img");
+
+
+profileImgUpload.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            profileImg.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+        const reportForm = document.getElementById("new-report-form");
+        const testReportsList = document.getElementById("test-reports");
+
+        reportForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const reportType = document.getElementById("report-type").value;
+            const reportFile = document.getElementById("report-file").files[0];
+            const reportDescription = document.getElementById("report-description").value;
+
+
+            const reportItem = document.createElement("li");
+            reportItem.innerHTML = `
+        <strong>${reportType}</strong> - 
+        <span>Uploaded: ${new Date().toLocaleDateString()}</span><br>
+        ${reportDescription ? `<em>${reportDescription}</em><br>` : ''}
+        <a href="${URL.createObjectURL(reportFile)}" target="_blank">View Report</a>
+    `;
+
+
+            testReportsList.appendChild(reportItem);
+
+
+            document.getElementById("report-type").value = '';
+            document.getElementById("report-file").value = '';
+            document.getElementById("report-description").value = '';
+        });
+
+    </script>
+</body>
+
+</html>

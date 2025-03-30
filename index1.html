@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <link rel="stylesheet" href="colour.css">
+</head>
+
+<body>
+    <div class="profile-container">
+        <header>
+            <div class="profile-header">
+                <h1>PATIENT PROFILE</h1>
+
+               
+                <div class="right">
+                    <div class="image"> <input type="file" id="profile-img-upload" accept="image/*"
+                            style="display:none">
+                        <label for="profile-img-upload" class="profile-img-label">
+                            <img id="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture">
+                        </label>
+
+                    </div>
+                    <p><strong>Patient ID: </strong><span id="patient-Id">Loading...</span></p>
+                </div>
+
+            </div>
+            <div class="nav-bar">
+                <div class="nav2">
+                    <div class="personal"><a style="color: white; text-decoration-line: none; font-size: 1.3rem;"
+                            href="#personal">Personal information</a></div>
+                    <div class="medical"><a style="color: white; text-decoration-line: none; font-size: 1.3rem;"
+                            href="#medical">medical-history</a></div>
+                    <div class="tests"><a style="color: white; text-decoration-line: none; font-size: 1.3rem;"
+                            href="#tests">Tests & Reports</a></div>
+                    <div class="new"><a style="color: white; text-decoration-line: none; font-size: 1.3rem;"
+                            href="#new">Add New Report / Test</a></div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="profile-card">
+
+
+            <div class="profile-details">
+                <div id="personal">
+                    <h3>Personal Information</h3>
+                        <div class="info">
+                            <p><strong>Name:</strong> <span id="patient-name">Loading...</span></p>
+                            <p><strong>DATE OF BIRTH:</strong> <span id="patient-age">Loading...</span></p>
+                            <p><strong>Email Adrress:</strong> <span id="patient-email">Loading...</span></p>
+                            <p><strong>Mobile number:</strong> <span id="patient-number">Loading...</span></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="medical">
+                    <h3>Medical History</h3>
+                    <div class="medical1">
+                    <p><strong>Known Allergies:</strong> <span id="patient-allergies">Loading...</span></p>
+                    <p><strong>Blood Group: </strong><span id="bloodgroup">Loading...</span></p>
+                </div>
+                </div>
+                <div id="tests">
+                    <h3>Tests & Reports</h3>
+                    <ul id="test-reports">
+                        <li>Blood Test - <span id="blood-test-date">N/A</span></li>
+                        <li>X-Ray - <span id="xray-date">N/A</span></li>
+                        <li>ECG - <span id="ecg-date">N/A</span></li>
+                    </ul>
+                </div>
+
+                
+                <div id="new">
+                    <h4>Add New Report / Test</h4>
+                    <form id="new-report-form">
+                        <label for="report-type">Report Type:</label>
+                        <input type="text" id="report-type" placeholder="Enter test name (e.g., MRI)" required><br><br>
+
+                        <label for="report-file">Upload Report:</label>
+                        <input type="file" id="report-file" accept="application/pdf,image/*" required><br><br>
+
+                        <label for="report-description">Report Description:</label>
+                        <textarea id="report-description"
+                            placeholder="Enter details of the report (optional)"></textarea><br><br>
+
+                        <button type="submit">Upload Report</button>
+                    </form>
+                </div>
+
+                <button id="edit-button" style="background-color: rgb(94, 94, 134) ; padding: 14px 14px 14px 14px; margin-bottom: 20px; border-radius: 5px ; color: white;">Edit Profile</button>
+            </div>
+        </div>
+
+        
+        <div id="edit-form" class="hidden" >
+            <h2>Edit Profile</h2>
+            <form id="edit-profile-form" style="margin-top: 25px; ;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="John Doe"><br><br>
+
+                <label for="age">DATE OF BIRTH::</label>
+                <input type="number" id="age" value="30"><br><br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select><br><br>
+
+                <label for="blood-group">Blood Group:</label>
+                <input type="text" id="blood-group" value="O+"><br><br>
+
+                <label for="allergies">Known Allergies:</label>
+                <input type="text" id="allergies" value="None"><br><br>
+
+                <label for="conditions">Past Medical Conditions:</label>
+                <input type="text" id="conditions" value="None"><br><br>
+
+                <label for="test-reports">Test Reports (Blood Test, X-Ray, ECG):</label>
+                <textarea
+                    id="test-reports-text">Blood Test - 01/10/2023, X-Ray - 15/09/2023, ECG - 20/08/2023</textarea><br><br>
+
+                <button type="submit" id="save-button" style="padding: 10px 10px 10px 10px ; background-color: #9cc7dc; color: white; border-radius: 7px;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    
+           <script>
+        document.getElementById("patient-name").innerText = localStorage.getItem("patientName") || "N/A";
+        document.getElementById("patient-age").innerText = localStorage.getItem("patientDOB") || "N/A";
+        document.getElementById("patient-email").innerText = localStorage.getItem("patientEmail") || "N/A";
+        document.getElementById("patient-number").innerText = localStorage.getItem("patientNumber") || "N/A";
+        document.getElementById("bloodgroup").innerText = localStorage.getItem("patientBlood") || "N/A";
+        document.getElementById("patient-allergies").innerText = localStorage.getItem("patientAllergies") || "N/A";
+        document.getElementById("patient-Id").innerText = localStorage.getItem("patientID") || "N/A";
+        
+  
+    </script>
+</body>
+
+</html>

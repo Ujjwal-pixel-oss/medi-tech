@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Patient Portal</h1>
+    </header>
+    <div class="name">
+        <a href="index4.html">Login as a patient</a>
+        <a href="index2.html">Login as a doctor</a>
+    </div>
+
+    <div class="container" id="patient">
+        <form id="profile-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+        
+            <label for="age">DATE OF BIRTH:</label>
+            <input type="date" id="age" name="age" required><br><br>
+
+            <label for="email">E-mail address</label>
+            <input type="text" id="email" name="email" required><br><br>
+
+            <label for="number">Mobile Number</label>
+            <input type="number" id="number" name="number" required><br><br>
+
+            <label for="blood-group">Blood Group:</label>
+                <input type="text" id="blood-group" name="blood-group" required><br><br>
+
+                <label for="allergies">Known Allergies:</label>
+                <input type="text" id="allergies" name="allergies" required><br><br>
+        
+            <button type="button" onclick="saveData()">Submit</button>
+        </form>
+    </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Health Portal</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+         function saveData() {
+    let name = document.getElementById("name").value;
+    let dob = document.getElementById("age").value;
+    let email = document.getElementById("email").value;
+    let number = document.getElementById("number").value;
+    let blood = document.getElementById("blood-group").value;
+    let allergies = document.getElementById("allergies").value;
+
+    // Function to generate a unique patient ID
+    function generateUniqueId() {
+        return 'PID-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+    }
+
+    let patientId = generateUniqueId(); // Generate unique ID
+
+    // Store data in localStorage
+    localStorage.setItem("patientID", patientId);
+    localStorage.setItem("patientName", name);
+    localStorage.setItem("patientDOB", dob);
+    localStorage.setItem("patientEmail", email);
+    localStorage.setItem("patientNumber", number);
+    localStorage.setItem("patientBlood", blood);
+    localStorage.setItem("patientAllergies", allergies);
+
+    // Show alert with unique ID
+    alert("Patient Registered Successfully!\nUnique ID: " + patientId);
+
+    // Redirect to index1.html
+    window.location.href = "index1.html"; 
+}
+
+        const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const app = express();
+
+// Set up file upload with multer
+const upload = multer({ dest: 'uploads/' });
+
+app.use(express.json());
+app.use(express.static('public'));
+
+// Patient profile submission API
+app.post('/upload', upload.array('medical-files', 5), (req, res) => {
+    // Save patient profile data to database
+    const { name, age, medicalHistory } = req.body;
+    const files = req.files; // Uploaded files
+
+    // Store the profile in a database (MongoDB, PostgreSQL, etc.)
+    // Here we just log the data for simplicity
+    console.log("Patient Profile Data:", { name, age, medicalHistory });
+    console.log("Uploaded files:", files);
+
+    res.json({ message: 'Profile uploaded successfully' });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<script>
+function retrievePatientData() {
+    let enteredID = document.getElementById("Unique-id").value;
+    let storedID = localStorage.getItem("patientID");
+
+    if (enteredID === storedID) {
+        document.getElementById("patientName").textContent = localStorage.getItem("patientName");
+        document.getElementById("patientDOB").textContent = localStorage.getItem("patientDOB");
+        document.getElementById("patientEmail").textContent = localStorage.getItem("patientEmail");
+        document.getElementById("patientNumber").textContent = localStorage.getItem("patientNumber");
+        document.getElementById("patientBlood").textContent = localStorage.getItem("patientBlood");
+        document.getElementById("patientAllergies").textContent = localStorage.getItem("patientAllergies");
+        document.getElementById("patientID").textContent = storedID;
+
+        // Show the patient data section
+        document.getElementById("patient-data").style.display = "block";
+    } else {
+        alert("Patient not found! Please check the ID.");
+        document.getElementById("patient-data").style.display = "none";
+    }
+}
+
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - View Patient</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <header>
+        <h1>Doctor Portal - Patient Lookup</h1>
+    </header>
+
+    <div class="container">
+        <label for="doctor-name">Doctor's name:</label>
+        <input type="text" id="doctor-name" placeholder="Enter your name">
+
+        <label for="Hospital Registration Id">Hospital Registration Id:</label>
+        <input type="text" id="HOspital-Id" placeholder="Enter hospital registration Id">
+        <label for="Unique-id">Enter Patient ID:</label>
+        <input type="text" id="Unique-id" placeholder="Enter Patient ID">
+        <button onclick="retrievePatientData()">Search</button>
+
+        <div id="patient-data" style="display: none;">
+            <h2>Patient Details</h2>
+            <p><strong>Name:</strong> <span id="patientName"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="patientDOB"></span></p>
+            <p><strong>Email:</strong> <span id="patientEmail"></span></p>
+            <p><strong>Mobile Number:</strong> <span id="patientNumber"></span></p>
+            <p><strong>Blood Group:</strong> <span id="patientBlood"></span></p>
+            <p><strong>Allergies:</strong> <span id="patientAllergies"></span></p>
+            <p><strong>Unique ID:</strong> <span id="patientID"></span></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Health Portal</p>
+    </footer>
+
+    <script>
+        function retrievePatientData() {
+            let enteredID = document.getElementById("Unique-id").value;
+            let storedID = localStorage.getItem("patientID");
+        
+            if (enteredID === storedID) {
+                document.getElementById("patientName").textContent = localStorage.getItem("patientName");
+                document.getElementById("patientDOB").textContent = localStorage.getItem("patientDOB");
+                document.getElementById("patientEmail").textContent = localStorage.getItem("patientEmail");
+                document.getElementById("patientNumber").textContent = localStorage.getItem("patientNumber");
+                document.getElementById("patientBlood").textContent = localStorage.getItem("patientBlood");
+                document.getElementById("patientAllergies").textContent = localStorage.getItem("patientAllergies");
+                document.getElementById("patientID").textContent = storedID;
+        
+                // Show the patient data section
+                document.getElementById("patient-data").style.display = "block";
+            } else {
+                alert("Patient not found! Please check the ID.");
+                document.getElementById("patient-data").style.display = "none";
+            }
+        }
+        
+        </script>
+</body>
+</html>
